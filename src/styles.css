@@ -1,0 +1,90 @@
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+img.media-object {
+    border-radius: 6px 6px 6px 6px;
+    width: 64px;
+}
+.code-box {
+    background: #fff;
+    
+    border-radius: 4px;
+    
+    margin-bottom: 24px;
+}
+.code-box header {
+    background: #1976D2;
+    color: #fff;
+    padding: 8px 8px 0 8px;
+}
+
+.code-box nav button {
+    background: #1E88E5;
+    border: 0px;
+    border-radius: 2px 2px 0 0;
+    color: #fff;
+    font-size: 13px;
+    height: 32px;
+    line-height: 32px;
+    margin-right: 8px;
+    outline: none;
+    padding: 0 24px;
+    text-transform: none;
+}
+.code-box button.selected {
+    background: #fff;
+    color: #546E7A;  
+}
+
+.old-price{
+    text-decoration: line-through;
+    text-align: center;
+    font-size: 75%;
+    width: 100%;
+    white-space: nowrap;
+    display: inline-block;
+}
+.new-price{
+    font-size: 120%;
+    text-align: center;
+    font-weight: 500;    
+    white-space: nowrap;
+    width:100%;
+    display: inline-block;
+}
+.app-text{
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.app-name{
+    font-size: 16px;
+    font-weight: 600;    
+}
+.app-price{    
+    width: 57px;
+}
+.move{
+    position:absolute;
+}
+.slide-wrapper{
+    position: relative;
+    width: 100%;
+    overflow: hidden;   
+}
+.slide-wrapper > .slide-item{
+    width:100%;    
+    
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    -webkit-perspective: 1000;
+            perspective: 1000;
+    
+}
+
+.slide-wrapper > .slide-item.sliding {
+    position:absolute;
+    top:0px;    
+}

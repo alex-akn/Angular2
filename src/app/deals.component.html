@@ -1,0 +1,37 @@
+  <h2>{{title}}</h2>
+  <button type="button" class="" (click)="showMenu()">
+    Categories
+  </button> 
+    <div [class.slide-wrapper]="mobileModeOn" [class.row]="!mobileModeOn" >
+      <div [class.slide-item]="mobileModeOn" [class.col-sm-3]="!mobileModeOn"      
+      [@showMenu]="menuState"
+      (@showMenu.done)="showMenuDone($event)"
+      [class.sliding]="isSlidingRight">
+        <div class="" >
+          <h3>Categories</h3>
+          <ul class="list-group">
+            <li *ngFor="let cat of categories" 
+            class="list-group-item"
+            [class.active]="cat.id===selectedCatId"
+            (click)="onSelectCat(cat.id); $event.stopPropagation()">
+              <span class="badge">{{cat.id}}</span> {{cat.name}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div [class.slide-item]="mobileModeOn" [class.col-sm-9]="!mobileModeOn"
+      [@hideMenu]="viewState"
+      (@hideMenu.done)="hideMenuDone($event)"
+      [class.sliding]="isSlidingLeft">
+        <div class="code-box ng-isolate-scope">
+          <header class="code-box-header">
+            <nav class="code-box-nav">
+              <button [class.selected]="selectedPrice===0" (click)="onSelectPrice(0)">&nbsp;   Все   &nbsp;</button>
+              <button [class.selected]="selectedPrice===1" (click)="onSelectPrice(1)">Бесплатные</button>
+              <button [class.selected]="selectedPrice===2" (click)="onSelectPrice(2)">Платные</button>
+            </nav>
+          </header>            
+        <app-list [apps]="apps"></app-list>      
+      </div>
+    </div>
+  </div>

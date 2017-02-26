@@ -1,0 +1,22 @@
+<ng-container *ngIf="app">
+<div class="media" >
+    <div class="media-left media-middle">
+        <img [src]="app.icon" class="media-object" alt="">
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading app-name app-text" style="max-width: 980px;">{{app.title}}</h4>
+        <h5 class="app-text" style="max-width: 980px;">{{app.dev}}</h5>
+        <h6 class="app-text" style="max-width: 980px;">Placeholder</h6>
+    </div>
+    <div class="media-right media-middle">
+        <span class="label label-danger pull-right old-price">{{app.oldprice}}</span>
+        <span class="label label-success pull-right new-price">{{app.price}}</span>
+    </div>
+    <div class="media-right media-middle">
+        <a class="btn btn-link btn-lg padless" href="{{app.link}}" role="button">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </a>
+    </div>
+</div>
+</ng-container>
+<button (click)="goBack()">Back</button>
