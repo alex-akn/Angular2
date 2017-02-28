@@ -22,9 +22,12 @@ export class AppFullDetailComponent implements OnInit{
         private location: Location
     ) {}
     ngOnInit(): void {
+        this.route.url.subscribe(url => console.log(url[0].path));
+        console.log('init');
         this.route.params
-        .switchMap((params: Params) => this.heroService.getApp(+params['id']))
-        .subscribe(app => this.app = app);
+        .switchMap((params: Params) =>
+        this.heroService.fetchData({'action':'byid', 'id':params['id']}))
+        .subscribe(response => this.app = response.results as App);
     }
     goBack(): void {
         this.location.back();

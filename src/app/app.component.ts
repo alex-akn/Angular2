@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'my-app',
   template: `    
@@ -24,7 +25,7 @@ import { Component } from '@angular/core';
         <div class="form-group">
           <input type="text" class="form-control" placeholder="{{comp}}">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default" (click)="nav()">Submit</button>
       </form>      
     </div>
   </div>
@@ -36,4 +37,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'App Store News';
+  constructor(private router: Router) {}
+  nav():void {
+    this.router.navigate(['deals-mac']);
+  }
 }

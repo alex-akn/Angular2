@@ -16,20 +16,24 @@ import { App } from './app';
     templateUrl: './app-detail.component.html',
     animations: [
     trigger('appState', [
-      state('inactive', style({
-        backgroundColor: '#cfd8dc',
-        height: '0px',
+      state('inactive', style({       
+        //height: '0px',
+        width : '0px',
+        opacity: '0',
         visibility: 'hidden',
         display: 'none',        
       })),
-      state('active',   style({  
-        backgroundColor: '#eee',      
+      state('active',   style({             
         display: 'block',
+        opacity: '1',
         visibility: 'visible',        
       })),
-      transition('inactive => active', animate('300ms ease-in')),
-
-      transition('active => inactive', animate('300ms ease-out'))
+      transition('inactive => active', animate('500ms ease-out')),
+      transition('active => inactive', animate('500ms ease-in')),
+      transition('void => active', [
+        style({transform: 'translateX(50%)', opacity: '0'}),
+        animate(200)
+      ])
     ])
   ]
 })

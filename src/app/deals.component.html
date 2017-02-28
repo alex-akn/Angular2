@@ -7,17 +7,7 @@
       [@showMenu]="menuState"
       (@showMenu.done)="showMenuDone($event)"
       [class.sliding]="isSlidingRight">
-        <div class="" >
-          <h3>Categories</h3>
-          <ul class="list-group">
-            <li *ngFor="let cat of categories" 
-            class="list-group-item"
-            [class.active]="cat.id===selectedCatId"
-            (click)="onSelectCat(cat.id); $event.stopPropagation()">
-              <span class="badge">{{cat.id}}</span> {{cat.name}}
-            </li>
-          </ul>
-        </div>
+      <app-menu [(device)]="selectedDevice" (catIdChange)="onSelectCat($event)"></app-menu>
       </div>
       <div [class.slide-item]="mobileModeOn" [class.col-sm-9]="!mobileModeOn"
       [@hideMenu]="viewState"
@@ -32,6 +22,11 @@
             </nav>
           </header>            
         <app-list [apps]="apps"></app-list>      
+      </div>
+      <div style="padding: 10px 0px">        
+        <button class="btn btn-default btn-lg btn-block"
+        (click)="loadMore();"
+        [disabled]="isLoading">{{isLoading ? "Loading..." : "Load More"}}</button>
       </div>
     </div>
   </div>

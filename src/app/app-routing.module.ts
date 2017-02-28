@@ -12,10 +12,11 @@ const routes: Routes = [
     { path: '', redirectTo: '/deals', pathMatch: 'full' },
     { path: 'deals', component: DealsComponent },
     { path: 'top-apps',  component: TopsComponent },
-    { path: 'newest-apps', component: NewestComponent },
-    { path: 'deals-mac', component: DealsMacComponent },
+    { path: 'newest-apps', component: DealsComponent },
+    { path: 'deals-mac', component: DealsComponent },
     { path: 'rss-generator', component: RssGeneratorComponent },
     { path: 'app/:id', component: AppFullDetailComponent },
+    //{ path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
