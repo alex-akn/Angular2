@@ -8,7 +8,8 @@ import {
   animate,  
 } from '@angular/core';
 
-import { App } from './app';
+import { App } from '../app';
+import { IntercomService } from '../intercom.service';
 
 @Component({
     moduleId: module.id,
@@ -17,19 +18,19 @@ import { App } from './app';
     animations: [
     trigger('appState', [
       state('inactive', style({       
-        //height: '0px',
-        width : '0px',
+        transform: 'translateX(50%)', 
+        //width : '0px',
         opacity: '0',
         visibility: 'hidden',
-        display: 'none',        
+        display: 'none',            
       })),
       state('active',   style({             
         display: 'block',
         opacity: '1',
         visibility: 'visible',        
       })),
-      transition('inactive => active', animate('500ms ease-out')),
-      transition('active => inactive', animate('500ms ease-in')),
+      transition('inactive => active', [style({height:'100%'}), animate('300ms ease-out')]),
+      transition('active => inactive', animate('300ms ease-in')),
       transition('void => active', [
         style({transform: 'translateX(50%)', opacity: '0'}),
         animate(200)
@@ -39,5 +40,6 @@ import { App } from './app';
 })
 
 export class AppDetailComponent {
-    @Input() app: App;       
+    @Input() app: App;
+    devices = [ 'iPhone', 'iPad', 'iOS Universal', 'Mac'];
 }

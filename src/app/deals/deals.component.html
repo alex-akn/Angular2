@@ -1,0 +1,37 @@
+    <ng-container *ngIf="mobileMode !==2 && menuState=='inactive'">
+    <button type="button" class="nav-button" (click)="showMenu()"
+    style="color:#fff; position:fixed; top:0px; left:0px; z-index: 5555">
+        <i class="fa fa-chevron-left"></i>&nbsp;Категории  
+    </button>
+    </ng-container>
+    <div [class.container]="mobileMode===2"> 
+      <h2 *ngIf="mobileMode === 2">{{title}}</h2>
+      <div [class.slide-wrapper]="mobileMode !== 2" [class.row]="mobileMode === 2" >
+        <div [class.slide-item]="mobileMode !==2" [class.col-sm-3]="mobileMode ===2"      
+        [@showMenu]="menuState" (@showMenu.done)="showMenuDone($event)"
+        [class.sliding]="isSlidingRight" [class.sidenav]="mobileMode === 1">
+          <app-menu [device]="selectedDevice" (deviceChange)="onSelectDevice($event)"
+          [mobileModeOn]="mobileMode === 0"
+          (catIdChange)="onSelectCat($event)"></app-menu>
+        </div>
+        <div [class.slide-item]="mobileMode!==2" [class.col-sm-9]="mobileMode===2"
+        [@hideMenu]="viewState" (@hideMenu.done)="hideMenuDone($event)"
+        [class.sliding]="isSlidingLeft" style="overflow: hidden;">
+          <div class="code-box ng-isolate-scope">
+            <header class="code-box-header">
+              <div class="code-box-nav btn-group">
+                <button [class.selected]="selectedPrice===0" (click)="onSelectPrice(0)">&nbsp;   Все   &nbsp;</button>
+                <button [class.selected]="selectedPrice===1" (click)="onSelectPrice(1)">Бесплатные</button>
+                <button [class.selected]="selectedPrice===2" (click)="onSelectPrice(2)">Платные</button>
+              </div>
+            </header>           
+          <app-list [apps]="apps" ></app-list>      
+        </div>
+        <div style="padding: 10px 0px">        
+          <button class="btn btn-default btn-lg btn-block"
+          (click)="loadMore();"
+          [disabled]="isLoading">{{isLoading ? "Loading..." : "Load More"}}</button>
+        </div>
+      </div>
+    </div>
+  </div>

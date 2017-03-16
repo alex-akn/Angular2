@@ -1,4 +1,5 @@
 /ServerSide
 /node_modules
+/.vscode
 *.js
 *.map

@@ -1,24 +1,31 @@
-        <div class="" >
+        <div class="sidebar" >
+          <ng-container *ngIf="device!==3 && !mobileModeOn">
           <h3>Device</h3>
           <ul class="list-group">
-            <li class="list-group-item"
+            <li class="cat-all"
+            [class.active]="device===2"
+            (click)="onSelectDevice(2); $event.stopPropagation()">
+               iOS Universal
+            </li>
+            <li class="cat-all"
             [class.active]="device===0"
             (click)="onSelectDevice(0); $event.stopPropagation()">
-              <span class="badge">{{device}}</span> iPhone
+               iPhone
             </li>
-            <li class="list-group-item"
+            <li class="cat-all"
             [class.active]="device===1"
             (click)="onSelectDevice(1); $event.stopPropagation()">
-              <span class="badge">{{device}}</span> iPad
-            </li>
+               iPad
+            </li>            
           </ul>
+          </ng-container>
           <h3>Categories</h3>
           <ul class="list-group">
             <li *ngFor="let cat of categories" 
-            class="list-group-item"
+            class="cat-all {{cat.class}}"
             [class.active]="cat.id===catId"
             (click)="onSelectCat(cat.id); $event.stopPropagation()">
-              <span class="badge">{{cat.id}}</span> {{cat.name}}
+              {{cat.name}}
             </li>
           </ul>
         </div>

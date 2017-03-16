@@ -1,0 +1,44 @@
+<nav class="navbar navbar-default" [class.navbar-fixed-top]="mobileModeOn"
+style="margin-bottom: 0; background-color: #00BCD4; border-color: #00BCD4;">
+  <div class="container">
+    <div *ngIf="!mobileModeOn" class="navbar-header">
+      <a class="navbar-brand" [routerLink]="">
+        <img alt="Brand" width="20" height="20" src="img/brand.png" style="display:inline">
+        AppStoreNews</a>           
+    </div>
+    <ng-container *ngIf="mobileModeOn">
+      <div class="row">
+        <div class="col-xs-3">
+           
+        </div>
+        <div class="col-xs-6">
+          <p class="nav-text">{{title}}</p>
+        </div>
+      <div class="col-xs-3">
+        <button type="button" class="nav-button" style="float:right;"
+          [routerLink]="[{ outlets: { popup: 'nav' } }]">
+            <i class="fa fa-ellipsis-h"></i>
+        </button>
+      </div>
+      </div>
+    </ng-container>
+    <div class="collapse navbar-collapse navbar-left">      
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="/deals">Скидки iOS</a></li>
+        <li routerLinkActive="active"><a routerLink="/deals-mac">Скидки Mac</a></li>
+        <li routerLinkActive="active"><a routerLink="/top-apps">Топ Apps</a></li>
+        <li routerLinkActive="active"><a routerLink="/newest-apps">Новое</a></li>
+      </ul>
+    </div>
+    <div class="search-wrapper">
+        <form class="search-form" role="search">        
+            <input type="text" class="form-input"
+            #searchBox (keyup.enter)='search(searchBox.value)'
+            [@searchState]="searchState" placeholder="Search" />
+            <button type="submit" class="nav-button" style="margin:0;"
+            (click)="onEngageSearch(searchBox.value)"><i class="fa fa-search"></i></button>               
+        </form>
+    </div> 
+  </div>
+</nav>
+ 

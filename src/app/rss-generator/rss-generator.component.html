@@ -1,0 +1,56 @@
+    <div class="container">    
+        <div id="topicon">
+                <img src="./img/RSS-Logo-125.png" alt="RSS" />
+        </div>
+        <div id="toptext">                
+                <p>Получайте все скидки в вашем RSS ридере</p>
+                <p>Выберете желаемые параметры, затем нажмите Создать и получите URL Вашего фида.</p>
+        </div>        
+        <div>            
+            <form name="rssGenerator" method="get">
+                <div class="row">                    
+                    <div class="form-group col-md-3 col-sm-6">
+                        <label for="feedDevice">Device</label>
+                        <select [ngModel]="feed.device" (ngModelChange)="deviceChanged($event)" name="selectedDevice" id="feedDevice" class="form-control">
+                            <option value="">All iOS</option>
+                            <option value="iphone">iPhone</option>
+                            <option value="ipad">iPad</option>
+                            <option value="mac">Mac</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3 col-sm-6">
+                        <label for="feedCost">Cost</label>
+                        <select [ngModel]="feed.cost" (ngModelChange)="costChanged($event)" name="selectedCost" id="feedCost" class="form-control">
+                            <option value="">All</option>
+                            <option value="paid">Paid</option>
+                            <option value="free">Free</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3 col-sm-6">
+                        <label for="feedGenre">Category</label>
+                        <select [ngModel]="feed.catId" (ngModelChange)="catChanged($event)" name="selectedGenre" id="feedGenre" class="form-control">                            
+                            <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3 col-sm-6">
+                        <label for="feedSubgenre">Subcategory</label>
+                        <select [ngModel]="feed.subcatId" (ngModelChange)="subcatChanged($event)"
+                        name="selectedSubgenre" id="feedSubgenre"
+                        [disabled]="subcat === undefined" class="form-control">
+                            <option *ngFor="let cat of subcat" [value]="cat.id">{{cat.name}}</option>
+                        </select>
+                    </div>                                   
+                </div>                  
+                <div class="form-group">  
+                    <label for="blankCheckbox">Popular</label>                                                 
+                    <input [ngModel]="feed.isPop" (ngModelChange)="popChanged($event)" name="isPopular" type="checkbox" id="blankCheckbox" aria-label="Popular" checked>                        
+                </div>                                  
+            </form>            
+            <div >
+                <div class="form-group">              
+                    <label>RSS Feed URL</label>
+                    <textarea id="urlField" class="form-control" rows="2">{{url}}</textarea> 
+                </div>                                                            
+            </div>
+        </div>
+    </div>
